@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+    postgres:
+        image: postgres
+        container_name: postgres
+        restart: always
+        user: postgres
+        secrets:
+            - db-password
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_DB=local
+            - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+        expose:
+            - 5432
+        healthcheck:
+            test: ["CMD", "pg_isready"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+
+    backend-users:
+        build:
+            context: ./backend/backend-users
+        container_name: backend-users
+        env_file:
+            - ./backend/backend-users/.env
+        depends_on:
+            postgres:
+                condition: service_healthy
+        ports:
+            - "8080:8080"
+
+    backend-spaces:
+        build:
+            context: ./backend/backend-spaces
+        container_name: backend-spaces
+        env_file:
+            - ./backend/backend-spaces/.env
+        depends_on:
+            postgres:
+                condition: service_healthy
+        ports:
+            - "8081:8081"
+
+secrets:
+    db-password:
+        file: db-password.txt
+
+volumes:
+    db-data:
