@@ -7,3 +7,6 @@
 [submodule "backend/backend-qr-attendance"]
 	path = backend/backend-qr-attendance
 	url = https://github.com/AAA-NU/backend-qr-attendance.git
+[submodule "TelegramBot"]
+	path = TelegramBot
+	url = https://github.com/AAA-NU/TelegramBot.git
