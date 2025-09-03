@@ -1,0 +1,6 @@
+[submodule "backend/backend-users"]
+	path = backend/backend-users
+	url = https://github.com/AAA-NU/backend-users.git
+[submodule "backend/backend-spaces"]
+	path = backend/backend-spaces
+	url = https://github.com/AAA-NU/backend-spaces.git
