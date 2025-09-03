@@ -65,8 +65,6 @@ services:
             postgres:
                 condition: service_healthy
         restart: always
-        volumes:
-            - ./TelegramBot:/app
 
 secrets:
     db-password:
