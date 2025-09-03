@@ -55,6 +55,19 @@ services:
         ports:
             - "8082:8082"
 
+    telegram-bot:
+        build:
+            context: ./TelegramBot
+        container_name: telegram-bot
+        env_file:
+            - ./TelegramBot/.env
+        depends_on:
+            postgres:
+                condition: service_healthy
+        restart: always
+        volumes:
+            - ./TelegramBot:/app
+
 secrets:
     db-password:
         file: db-password.txt
