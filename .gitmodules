@@ -4,3 +4,6 @@
 [submodule "backend/backend-spaces"]
 	path = backend/backend-spaces
 	url = https://github.com/AAA-NU/backend-spaces.git
+[submodule "backend/backend-qr-attendance"]
+	path = backend/backend-qr-attendance
+	url = https://github.com/AAA-NU/backend-qr-attendance.git
